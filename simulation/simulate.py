@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 
 import argparse
@@ -45,16 +45,16 @@ def parse_command_line_args():
 def main():
     args = parse_command_line_args()
     device_id = args.device_id
-    assert(len(device_id) > 0, 'Invalid device id')
+    assert len(device_id) > 0, 'Invalid device id'
     number_of_signals = args.number_of_signals
-    assert(number_of_signals > 0, 'At least 1 signal expected')
+    assert number_of_signals > 0, 'At least 1 signal expected'
     events_per_second = args.events_per_second
-    assert(events_per_second > 0, 'Invalid frequency')
+    assert events_per_second > 0, 'Invalid frequency'
     frequency = 1 / events_per_second
     token = args.token
-    assert(len(token) > 0, 'Invalid token')
+    assert len(token) > 0, 'Invalid token'
     url = args.url
-    assert(len(url) > 0, 'Invalid URL')
+    assert len(url) > 0, 'Invalid URL'
 
     random.seed(args.device_id)  # A given device ID will always generate the same random data
 
@@ -77,7 +77,7 @@ def main():
         _ = requests.post(url, json={'json_payload': payload})
         # Sends {frequency} events per second
         time.sleep(frequency)
-        
+
     print('OK')
 
 
