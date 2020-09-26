@@ -30,7 +30,7 @@ class Event(object):
         assert self.timestamp > 0, 'Unexpected timestamp'
         self.device = p['device']
         assert len(self.device) > 0, 'Unexpected device'
-        self.temperature = int(p['temperature'])
+        self.temperature = float(p['temperature'])
         self.is_saved = False
   
     def save(self) -> None:
@@ -63,28 +63,30 @@ class Event(object):
         pubsub_client.publish(
             topic,
             data=data,
-            timestamp=self.timestamp,
-            device=self.device,
-            temperature=self.temperature,
+            timestamp=u'{}'.format(str(self.timestamp)),
+            device=u'{}'.format(str(self.device)),
+            temperature=u'{}'.format(str(self.temperature)),
         )
         return
 
 @firestore.transactional
 def _acid_update(transaction, doc_ref, event : Event):
     snapshot = doc_ref.get(transaction=transaction)
-    
-    old_count = snapshot.get('count')
-    if not old_count:
-        new_count = 0
-    else:
-        new_count = old_count + 1
 
-    transaction.set(doc_ref, {
-        u'{}'.format('count'): new_count,
-        u'{}'.format('temperature'): event.temperature,
-        u'{}'.format('temperature_at'): event.timestamp,
-        u'{}'.format('updated_at'): firestore.SERVER_TIMESTAMP,
-    })
+    if not snapshot.exists:
+        transaction.set(doc_ref, {
+            u'{}'.format('count'): 1,
+            u'{}'.format('temperature'): event.temperature,
+            u'{}'.format('temperature_at'): event.timestamp,
+            u'{}'.format('updated_at'): firestore.SERVER_TIMESTAMP,
+        })
+    else:
+        transaction.update(doc_ref, {
+            u'{}'.format('count'): firestore.Increment(1),
+            u'{}'.format('temperature'): event.temperature,
+            u'{}'.format('temperature_at'): event.timestamp,
+            u'{}'.format('updated_at'): firestore.SERVER_TIMESTAMP,
+        })
 
 def _authorize(request):
     authorization = request.headers['Authorization']

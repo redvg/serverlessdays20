@@ -75,12 +75,13 @@ def main():
         }
         headers = {"Authorization": "Bearer " + token}
         print('Publishing message {} of {} in {}'.format(i, number_of_signals, device_id))
-        _ = requests.post(endpoint, json=payload, headers=headers)
+        r = requests.post(endpoint, json=payload, headers=headers)
+        if r.status_code == 200:
+            print('ok')
+        else:
+            print('FAILED')
         # Sends {frequency} events per second
-        time.sleep(frequency)
-
-    print('OK')
-
+        # time.sleep(frequency)
 
 if __name__ == '__main__':
     main()
