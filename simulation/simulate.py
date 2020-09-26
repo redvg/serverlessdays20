@@ -36,9 +36,9 @@ def parse_command_line_args():
         help='Authorization token',
     )
     parser.add_argument(
-        '--url', 
+        '--endpoint', 
         required=True, 
-        help='URL',
+        help='FQDN',
     )
     return parser.parse_args()
 
@@ -53,8 +53,8 @@ def main():
     frequency = 1 / events_per_second
     token = args.token
     assert len(token) > 0, 'Invalid token'
-    url = args.url
-    assert len(url) > 0, 'Invalid URL'
+    endpoint = args.endpoint
+    assert len(endpoint) > 0, 'Invalid URL'
 
     random.seed(args.device_id)  # A given device ID will always generate the same random data
 
@@ -70,11 +70,12 @@ def main():
         simulated_temperature = simulated_temperature + temperature_trend * random.normalvariate(0.01,0.005)
         payload = {
             "timestamp": int(time.time()), 
-            "device": device_id, 
+            "device": device_id,
             "temperature": simulated_temperature,
         }
+        headers = {"Authorization": "Bearer " + token}
         print('Publishing message {} of {} in {}'.format(i, number_of_signals, device_id))
-        _ = requests.post(url, json={'json_payload': payload})
+        _ = requests.post(endpoint, json={'json_payload': payload}, headers=headers)
         # Sends {frequency} events per second
         time.sleep(frequency)
 

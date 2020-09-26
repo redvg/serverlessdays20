@@ -1,0 +1,3 @@
+google-cloud-firestore
+grpcio
+google-cloud-pubsub
