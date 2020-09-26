@@ -75,7 +75,7 @@ def main():
         }
         headers = {"Authorization": "Bearer " + token}
         print('Publishing message {} of {} in {}'.format(i, number_of_signals, device_id))
-        _ = requests.post(endpoint, json={'json_payload': payload}, headers=headers)
+        _ = requests.post(endpoint, json=payload, headers=headers)
         # Sends {frequency} events per second
         time.sleep(frequency)
 
