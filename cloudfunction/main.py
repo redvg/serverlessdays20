@@ -53,7 +53,6 @@ class Event(object):
                 continue
         if not self.is_saved:
             raise Exception('Could not update')
-
         return
 
     def publish(self) -> None:
@@ -111,7 +110,7 @@ def main(request):
     p = request.get_json(silent=True)
     assert p, 'Missing payload'
     print(p)
-    event = Event(p=p)
+    event = Event(p=json.loads(p))
     event.save()
     event.publish()
     return
