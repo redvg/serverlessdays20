@@ -79,7 +79,7 @@ def _acid_update(transaction, doc_ref, event : Event):
     else:
         new_count = old_count + 1
 
-    transaction.update(doc_ref, {
+    transaction.set(doc_ref, {
         u'{}'.format('count'): new_count,
         u'{}'.format('temperature'): event.temperature,
         u'{}'.format('temperature_at'): event.timestamp,
