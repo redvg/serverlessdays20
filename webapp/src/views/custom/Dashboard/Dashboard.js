@@ -27,6 +27,7 @@ const Dashboard = (props) => {
   const classes = useStyles();
 
   const [allDevices, setAllDevices] = React.useState([]);
+  const [totalEvents, setTotalEvents] = React.useState([]);
 
   const streamCollection = (collectionName, observer) => {
     const { firestore } = props;
@@ -46,6 +47,7 @@ const Dashboard = (props) => {
               }
             });
             setAllDevices(data);
+            setTotalEvents(data.reduce((a, c)=>{return a+c.events}, 0));
         },
         error: () => {}
     });
@@ -60,7 +62,7 @@ const Dashboard = (props) => {
           <TotalUsers count={allDevices.length}/>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TotalProfit count={99}/>
+          <TotalProfit count={totalEvents}/>
         </Grid>
         <Grid item xs={12}>
           <Events devices={allDevices}/>
