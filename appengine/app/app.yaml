@@ -1,0 +1,11 @@
+runtime: python37
+
+handlers:
+- url: /.*
+  script: auto
+
+- url: /public
+  static_dir: public
+
+env_variables:
+  FOO: 'bar'

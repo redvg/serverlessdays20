@@ -55,3 +55,10 @@ firebase utils js
 auth: enable google signin, add auth domain
 
 dashboard.js - stream
+
+
+gae
+cd appengine
+make build
+dockerfile
+expose 5050
