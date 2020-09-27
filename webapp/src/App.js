@@ -9,7 +9,6 @@ import { chartjs } from './helpers';
 import theme from './theme';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './assets/scss/index.scss';
-import validators from './common/validators';
 import Routes from './Routes';
 import * as firebase from 'firebase/app';
 import '@firebase/firestore';
@@ -29,12 +28,6 @@ const browserHistory = createBrowserHistory();
 Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
   draw: chartjs.draw
 });
-
-validate.validators = {
-  ...validate.validators,
-  ...validators
-};
-
 
 
 class App extends Component {

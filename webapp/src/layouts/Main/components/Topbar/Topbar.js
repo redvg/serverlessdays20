@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     width: 320,
   },
   bar : {
-    background: colors.grey[400],//theme.palette.secondary.light,
+    background: colors.grey[300],//theme.palette.secondary.light,
   },
   customerButton: {
     marginLeft: theme.spacing(5),
