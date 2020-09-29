@@ -57,7 +57,7 @@ async def _run_one(device_id, number_of_signals, token, endpoint):
         temperature_trend = -.1
 
     for i in range(1, number_of_signals + 1):
-        simulated_temperature = simulated_temperature + temperature_trend * random.normalvariate(0.01,0.005)
+        simulated_temperature = simulated_temperature + temperature_trend * random.normalvariate(1,0.005) #mu .01
         payload = {
             "timestamp": int(time.time()), 
             "device": device_id,

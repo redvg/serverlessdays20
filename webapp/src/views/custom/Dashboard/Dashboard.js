@@ -6,8 +6,8 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import * as firebase from 'firebase/app';
 
 import {
-  TotalUsers,
-  TotalProfit,
+  TotalEvents,
+  TotalDevices,
   Events
 } from './components';
 
@@ -59,10 +59,10 @@ const Dashboard = (props) => {
     <div className={classes.root}>
       <Grid container spacing={4} >
         <Grid item xs={12} sm={6}>
-          <TotalUsers count={allDevices.length}/>
+          <TotalDevices count={allDevices.length}/>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TotalProfit count={totalEvents}/>
+          <TotalEvents count={totalEvents}/>
         </Grid>
         <Grid item xs={12}>
           <Events devices={allDevices}/>

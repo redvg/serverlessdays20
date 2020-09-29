@@ -1,3 +1,3 @@
 export { default as Events } from './Events';
-export { default as TotalProfit } from './TotalProfit';
-export { default as TotalUsers } from './TotalUsers';
+export { default as TotalEvents } from './TotalEvents';
+export { default as TotalDevices } from './TotalDevices';
