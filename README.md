@@ -5,7 +5,7 @@ GCP workshop source code
 ![webapp](img/2.png "Web app")
 ![webapp](img/3.png "Web app")
 
-### simulation
+## simulation
 
 - create vm
 - ssh to vm
@@ -33,57 +33,73 @@ or
 python3 simulate.py --endpoint=https://europe-west1-serverlessdays20.cloudfunctions.net/consumer --simulation_id=green --number_of_devices=4  --number_of_signals=100
 ```
 
-### cloud function
+## cloud function
 
 - create with http trigger
 - use main.py & requirements.txt 
 
-
-### firestore
+## firestore
 
 - enable firestore in native mode
 - create `events` collection
 
-### 
+## firebase
+
+- add web sdk via ui 
+
+- enable google sign in
+- add localhost to authorized domains
 
 
+## web app
 
-
-webapp
+- run locally
+```bash
 cd webapp
 npm i
 npm start
+```
+- `Dashboard.js` for pure stream
+- `Chart.js` for stream conditional on mutation type
+- feed `firebase.utils.js` with firebase wed sdk
+- `App.js` for `FirestoreProvider` and `withFirebaseAuth` HOC
 
-https://material-ui.com/ru/
+components: https://material-ui.com
 
-firebase:
-add sdk
-firebase utils js
-auth: enable google signin, add auth domain
+## appengine
 
-dashboard.js - stream
-chart.js - stream + change type
-
-
-gae
+- build
+```bash
 cd appengine
 make build
-dockerfile
-expose 5050
-
-cloud shell
+```
+- deploy
+```bash
 git clone https://github.com/redvg/serverlessdays20
+cd appengine
 cd app
 gcloud app deploy
-domain .....appspot -> firebase auth add to authd domains
+```
+- add `domain` to firebase
 
+## pubsub
 
-bq
-create dataset
-create table!
-create gcs bucket
-create dataflow from template topic to bq
+- create topic `events`
 
+## bigquery
+
+- create dataset `events`
+- create table `records`, use schema from cloud function
+
+## cloud storage
+
+- create bucket `events-etl`
+
+## dataflow
+
+- create job from `pubsub topic to bigquery` template, use pubsub & bigquery & cloud storage vars
+
+template: 
 https://cloud.google.com/dataflow/docs/guides/templates/provided-templates
 https://cloud.google.com/dataflow/docs/guides/templates/provided-streaming#cloudpubsubtobigquery
 https://github.com/GoogleCloudPlatform/DataflowTemplates/blob/master/src/main/java/com/google/cloud/teleport/templates/PubSubToBigQuery.java
