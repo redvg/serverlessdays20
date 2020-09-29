@@ -62,3 +62,9 @@ cd appengine
 make build
 dockerfile
 expose 5050
+
+cloud shell
+git clone https://github.com/redvg/serverlessdays20
+cd app
+gcloud app deploy
+domain .....appspot -> firebase auth add to authd domains

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Divider, Drawer } from '@material-ui/core';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import TimelineIcon from '@material-ui/icons/Timeline';
 import FilterDramaIcon from '@material-ui/icons/FilterDrama';
 
 import { Profile, SidebarNav } from './components';
@@ -42,6 +42,11 @@ const Sidebar = props => {
       title: 'Dashboard',
       href: '/dashboard',
       icon: <FilterDramaIcon />
+    },
+    {
+      title: 'Chart',
+      href: '/chart',
+      icon: <TimelineIcon />
     },
   ];
 

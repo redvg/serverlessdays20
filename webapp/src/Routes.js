@@ -6,9 +6,7 @@ import { Main as MainLayout } from './layouts';
 
 import {
   Dashboard as DashboardView,
-  Customer as CustomerView,
-  Devoteam as DevoteamView,
-  Settings as SettingsView,
+  Chart as ChartView,
   NotFound as NotFoundView
 } from './views';
 
@@ -25,6 +23,12 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/dashboard"
+      />
+      <RouteWithLayout
+        component={ChartView}
+        exact
+        layout={MainLayout}
+        path="/chart"
       />
       <RouteWithLayout
         component={NotFoundView}
