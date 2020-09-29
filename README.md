@@ -1,31 +1,19 @@
-# serverlessdays20
+# ServerlessDays 2020 Hamburg
 GCP workshop source code
 
 ![architecture](img/1.png "Architecture diagram")
 ![webapp](img/2.png "Web app")
 ![webapp](img/3.png "Web app")
 
-
-
-
-
-
 ### simulation
 
-install
+- create vm
+- ssh to vm
 ```bash
-sudo apt install apache2-utils
-```
-
-create json
-
-
-create vm
-
-
-ssh to vm
 gcloud beta compute ssh --zone "us-central1-a" "instance-1" --project "serverlessdays20"
-
+```
+- install dependencies
+```bash
 sudo apt install git
 sudo apt install python3
 git clone https://github.com/redvg/serverlessdays20
@@ -34,17 +22,30 @@ cd simulation
 sudo apt install python3-pip
 pip3 install -v requests
 pip3 install aiohttp
-chmod +x ./run.sh {SIMULATION_ID} {NUMBER_OF_DEVICES} {NUMBER_OF_SIGNALS_FROM_DEVICE} {ENDPOINT}
+```
+- run simulation
+```bash
+chmod +x ./run.sh
+./run.sh {SIMULATION_ID} {NUMBER_OF_DEVICES} {NUMBER_OF_SIGNALS_FROM_DEVICE} {ENDPOINT}
+```
+or
+```bash
+python3 simulate.py --endpoint=https://europe-west1-serverlessdays20.cloudfunctions.net/consumer --simulation_id=green --number_of_devices=4  --number_of_signals=100
+```
+
+### cloud function
+
+- create with http trigger
+- use main.py & requirements.txt 
 
 
-create firestore db in native mode
+### firestore
 
+- enable firestore in native mode
+- create `events` collection
 
-create cf http
+### 
 
-./run.sh red 5 100 https://europe-west1-serverlessdays20.cloudfunctions.net/consumer
-or 
-python3 simulate.py --endpoint=https://europe-west1-serverlessdays20.cloudfunctions.net/consumer --simulation_id=green --number_of_devices=4
 
 
 
