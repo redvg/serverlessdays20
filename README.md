@@ -1,6 +1,12 @@
 # serverlessdays20
 GCP workshop source code
 
+![architecture](img/1.png "Architecture diagram")
+![webapp](img/2.png "Web app")
+![webapp](img/3.png "Web app")
+
+
+
 
 
 
