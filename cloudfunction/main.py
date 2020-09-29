@@ -57,11 +57,14 @@ class Event(object):
 
     def publish(self) -> None:
         topic = pubsub_client.topic_path(PROJECT_ID, PUBSUB_TOPIC)
-        data = u'new event'
-        data = data.encode('utf-8')
+        data = {
+            'device': str(self.device),
+            'timestamp': str(self.timestamp),
+            'temperature': str(self.temperature),
+        }
         pubsub_client.publish(
             topic,
-            data=data,
+            data=str(json.dumps(data)).encode('utf-8'),
             timestamp=u'{}'.format(str(self.timestamp)),
             device=u'{}'.format(str(self.device)),
             temperature=u'{}'.format(str(self.temperature)),

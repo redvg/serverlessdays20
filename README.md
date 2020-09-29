@@ -55,6 +55,7 @@ firebase utils js
 auth: enable google signin, add auth domain
 
 dashboard.js - stream
+chart.js - stream + change type
 
 
 gae
@@ -68,3 +69,14 @@ git clone https://github.com/redvg/serverlessdays20
 cd app
 gcloud app deploy
 domain .....appspot -> firebase auth add to authd domains
+
+
+bq
+create dataset
+create table!
+create gcs bucket
+create dataflow from template topic to bq
+
+https://cloud.google.com/dataflow/docs/guides/templates/provided-templates
+https://cloud.google.com/dataflow/docs/guides/templates/provided-streaming#cloudpubsubtobigquery
+https://github.com/GoogleCloudPlatform/DataflowTemplates/blob/master/src/main/java/com/google/cloud/teleport/templates/PubSubToBigQuery.java
