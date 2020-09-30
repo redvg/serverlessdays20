@@ -38,17 +38,23 @@ python3 simulate.py --endpoint=https://europe-west1-serverlessdays20.cloudfuncti
 - create with http trigger
 - use main.py & requirements.txt 
 
+https://cloud.google.com/functions/docs/monitoring/error-reporting#functions-errors-log-python  
+
+
 ## firestore
 
 - enable firestore in native mode
 - create `events` collection
 
+https://cloud.google.com/firestore/docs/firestore-or-datastore  
+https://firebase.google.com/docs/firestore/quotas
+
 ## firebase
 
 - add web sdk via ui 
-
 - enable google sign in
 - add localhost to authorized domains
+- change firestore security rules
 
 
 ## web app
@@ -59,10 +65,10 @@ cd webapp
 npm i
 npm start
 ```
-- `Dashboard.js` for pure stream
-- `Chart.js` for stream conditional on mutation type
 - feed `firebase.utils.js` with firebase wed sdk
-- `App.js` for `FirestoreProvider` and `withFirebaseAuth` HOC
+- `App.js` for `FirestoreProvider` component and `withFirebaseAuth` higher-order component
+- `Dashboard.js` pure stream observer
+- `Chart.js` client-side stream aggregator
 
 components: https://material-ui.com
 
@@ -82,9 +88,15 @@ gcloud app deploy
 ```
 - add `domain` to firebase
 
+https://cloud.google.com/appengine/docs/flexible/python/quickstart  
+https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/appengine/flexible/hello_world/app.yaml  
+https://cloud.google.com/appengine/docs/flexible/custom-runtimes/build
+
 ## pubsub
 
-- create topic `events`
+- create topic `events` 
+
+https://cloud.google.com/pubsub/architecture
 
 ## bigquery
 
@@ -99,6 +111,8 @@ gcloud app deploy
 
 - create job from `pubsub topic to bigquery` template, use pubsub & bigquery & cloud storage vars
 
+https://beam.apache.org/  
+https://cloud.google.com/pubsub/docs/pubsub-dataflow 
 template: 
 https://cloud.google.com/dataflow/docs/guides/templates/provided-templates
 https://cloud.google.com/dataflow/docs/guides/templates/provided-streaming#cloudpubsubtobigquery
