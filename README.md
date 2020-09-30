@@ -46,7 +46,7 @@ https://cloud.google.com/functions/docs/monitoring/error-reporting#functions-err
 - enable firestore in native mode
 - create `events` collection
 
-https://cloud.google.com/firestore/docs/firestore-or-datastore  
+https://cloud.google.com/firestore/docs/firestore-or-datastore   
 https://firebase.google.com/docs/firestore/quotas
 
 ## firebase
@@ -89,7 +89,7 @@ gcloud app deploy
 - add `domain` to firebase
 
 https://cloud.google.com/appengine/docs/flexible/python/quickstart  
-https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/appengine/flexible/hello_world/app.yaml  
+https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/appengine/flexible/hello_world/app.yaml   
 https://cloud.google.com/appengine/docs/flexible/custom-runtimes/build
 
 ## pubsub
@@ -112,8 +112,8 @@ https://cloud.google.com/pubsub/architecture
 - create job from `pubsub topic to bigquery` template, use pubsub & bigquery & cloud storage vars
 
 https://beam.apache.org/  
-https://cloud.google.com/pubsub/docs/pubsub-dataflow 
+https://cloud.google.com/pubsub/docs/pubsub-dataflow  
 template: 
-https://cloud.google.com/dataflow/docs/guides/templates/provided-templates
-https://cloud.google.com/dataflow/docs/guides/templates/provided-streaming#cloudpubsubtobigquery
+https://cloud.google.com/dataflow/docs/guides/templates/provided-templates  
+https://cloud.google.com/dataflow/docs/guides/templates/provided-streaming#cloudpubsubtobigquery  
 https://github.com/GoogleCloudPlatform/DataflowTemplates/blob/master/src/main/java/com/google/cloud/teleport/templates/PubSubToBigQuery.java
